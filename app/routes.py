@@ -1,5 +1,6 @@
 from app import app
+from app.controller import FlightsController
 
-@app.route('/')
-def index():
-    return "Hello from PT Aviator Nusantara!"
+@app.route('/flights')
+def flights():
+    return FlightsController.index()

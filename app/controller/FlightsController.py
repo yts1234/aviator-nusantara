@@ -1,4 +1,4 @@
 from app import response, app
 
 def index():
-    return"Hai Dari PT Aviator Nusantara!"
+    return"Hai Dari Controller PT Aviator Nusantara!"
