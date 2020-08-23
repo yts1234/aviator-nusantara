@@ -1,4 +1,5 @@
 from app import response, app
 
+
 def index():
-    return"Hai Dari Controller PT Aviator Nusantara!"
+    return response.ok("Hai Dari Controller PT Aviator Nusantara!", "OK")
