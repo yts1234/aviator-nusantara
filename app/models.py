@@ -3,9 +3,8 @@ from datetime import datetime
 
 class Flights(db.Model):
     id = db.Column(db.BigInteger, primary_key=True, autoincrement=True)
-    airline_code = db.Column(db.String(20), nullable=False, index=True, \
-            unique=True)
-    flight_number = db.Column(db.String(20), nullabe=False)
+    airline_code = db.Column(db.String(20), index=True, unique=True, nullable=False)
+    flight_number = db.Column(db.String(20), nullable=False)
     departure_port = db.Column(db.String(5), nullable=False)
     arrival_port = db.Column(db.String(5), nullable=False)
     departure_time = db.Column(db.DateTime) 
