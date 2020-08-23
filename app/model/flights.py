@@ -8,8 +8,8 @@ class Flights(db.Model):
     flight_number = db.Column(db.String(20), nullable=False)
     departure_port = db.Column(db.String(5), nullable=False)
     arrival_port = db.Column(db.String(5), nullable=False)
-    departure_time = db.Column(db.DateTime)
-    arrival_time = db.Column(db.DateTime)
+    departure_time = db.Column(db.DateTime, nullable=False)
+    arrival_time = db.Column(db.DateTime, nullable=False)
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
     updated_at = db.Column(db.DateTime, default=datetime.utcnow)
 
