@@ -39,10 +39,36 @@ def store():
         db.session.add(flight)
         db.session.commit()
 
-        return response.ok('OK', 'Successfully stored data')
+        return response.ok("OK", "Successfully stored data")
 
     except Exception as e:
         print(e)
+
+#update data
+def update(id):
+    try: 
+        airline_code = request.json['airline_code']
+        flight_number = request.json['flight_number']
+        departure_port = request.json['departure_port']
+        arrival_port = request.json['arrival_port']
+        departure_time = request.json['departure_time']
+        arrival_time = request.json['arrival_time']
+        
+        flight = Flights.query.filter_by(id=id).first()
+        flight.airline_code = airline_code
+        flight.flight_number = flight_number
+        flight.departure_port = departure_port
+        flight.arrival_port = arrival_port
+        flight.departure_time = departure_time
+        flight.arrival_time = arrival_time
+
+        db.session.commit()
+        return response.ok("OK", "Successfully update data")
+
+    except Exception as e:
+        print(e)
+        
+#delete data
 
 #Transform data into Array
 def transform(flights):
@@ -53,6 +79,7 @@ def transform(flights):
 #Transform data into python dict/object
 def singleTransform(flight):
     data = {
+            'id' : flight.id,
             'airline_code' : flight.airline_code,
             'flightNumber' : flight.flight_number,
             'departurePort' : flight.departure_port,
