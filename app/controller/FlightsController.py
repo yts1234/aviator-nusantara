@@ -1,6 +1,8 @@
 from app.model.flights import Flights
 from app import response, app, db
 from flask import request
+from datetime import datetime
+import pytz
 
 #Get all data
 def index():
@@ -34,7 +36,8 @@ def store():
 
         flight = Flights(airline_code=airline_code, \
                 flight_number=flight_number, departure_port=departure_port,\
-                arrival_port = arrival_port, departure_time = departure_time,\
+                arrival_port = arrival_port, \
+                departure_time = departure_time,\
                 arrival_time = arrival_time)
         db.session.add(flight)
         db.session.commit()
@@ -96,8 +99,18 @@ def singleTransform(flight):
             'flightNumber' : flight.flight_number,
             'departurePort' : flight.departure_port,
             'arrivalPort' : flight.arrival_port,
-            'departureTime' : flight.departure_time,
-            'arrivalTime' : flight.arrival_time,
+            'departureTime' : localToUTC(str(flight.departure_time)),
+            'arrivalTime' : localToUTC(str(flight.arrival_time)),
     }
 
     return data
+
+#Change localtime to UTC ISO8601
+def localToUTC(time):
+    date_time_obj = datetime.strptime(time, '%Y-%m-%d %H:%M:%S')
+    tz_local = pytz.timezone('Asia/Jakarta')
+    tz_local_obj = tz_local.localize(date_time_obj)
+
+    #convert to UTC
+    tz_utc=tz_local_obj.astimezone(pytz.utc)
+    return tz_utc.isoformat()+"Z"
