@@ -16,11 +16,12 @@ This is API for external 3rd Party client who want to get access into Company da
 
 ## Installing
 1. Clone this repository
-2. Change the DB credential in .flaskenv file
-3. run flask db migrate for creating the migration file
-4. run flask db upgrade for creating the database schema
-5. run flask run -h 0.0.0.0 -p 8080 this will run flask localy in your server listening on your machine IP address and port 8080
-6. Use Postman for testing this APIs
+2. run source venv/bin/activate to activate python virtual environment. Using this you will isolate your project environment.
+3. Change the DB credential in .flaskenv file
+4. run flask db migrate for creating the migration file
+5. run flask db upgrade for creating the database schema
+6. run flask run -h 0.0.0.0 -p 8080 this will run flask localy in your server listening on your machine IP address and port 8080
+7. Use Postman for testing this APIs
 
 ## API Endpoints
 Below are the list of CRUD APIs
