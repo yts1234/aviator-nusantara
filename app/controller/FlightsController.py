@@ -69,6 +69,18 @@ def update(id):
         print(e)
         
 #delete data
+def delete(id):
+    try:
+        flight = Flights.query.filter_by(id=id).first()
+        if not flight:
+            return response.badRequest("NOT OK", "Data not found")
+
+        db.session.delete(flight)
+        db.session.commit()
+
+        return response.ok("OK", "Successfully delete data")
+    except Exception as e:
+        print(e)
 
 #Transform data into Array
 def transform(flights):

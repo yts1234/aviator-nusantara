@@ -16,3 +16,7 @@ def storeFlight():
 @app.route('/updateFlight/<id>', methods=['PUT'])
 def updateFlight(id):
     return FlightsController.update(id)
+
+@app.route('/deleteFlight/<id>', methods=['DELETE'])
+def deleteFlight(id):
+    return FlightsController.delete(id)
