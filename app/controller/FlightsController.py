@@ -1,7 +1,8 @@
 from app.model.flights import Flights
-from app import response, app
+from app import response, app, db
+from flask import request
 
-
+#Get all data
 def index():
     try:
         flights = Flights.query.all()
@@ -10,6 +11,7 @@ def index():
     except Exception as e:
         print(e)
 
+#Get one data
 def oneFlight(id):
     try:
         flight = Flights.query.filter_by(airline_code=id).first()
@@ -20,12 +22,35 @@ def oneFlight(id):
     except Exception as e:
         print(e)
 
+#Store data to database
+def store():
+    try:
+        airline_code = request.json['airline_code']
+        flight_number = request.json['flight_number']
+        departure_port = request.json['departure_port']
+        arrival_port = request.json['arrival_port']
+        departure_time = request.json['departure_time']
+        arrival_time = request.json['arrival_time']
+
+        flight = Flights(airline_code=airline_code, \
+                flight_number=flight_number, departure_port=departure_port,\
+                arrival_port = arrival_port, departure_time = departure_time,\
+                arrival_time = arrival_time)
+        db.session.add(flight)
+        db.session.commit()
+
+        return response.ok('OK', 'Successfully stored data')
+
+    except Exception as e:
+        print(e)
+
+#Transform data into Array
 def transform(flights):
     array = []
     for i in flights:
         array.append(singleTransform(i))
     return array
-
+#Transform data into python dict/object
 def singleTransform(flight):
     data = {
             'airline_code' : flight.airline_code,

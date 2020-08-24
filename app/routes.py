@@ -8,3 +8,7 @@ def flights():
 @app.route('/flight/<id>')
 def oneFlight(id):
     return FlightsController.oneFlight(id)
+
+@app.route('/storeFlight', methods=['POST'])
+def storeFlight():
+    return FlightsController.store()
