@@ -16,10 +16,10 @@ def index():
 #Get one data
 def oneFlight(id):
     try:
-        flight = Flights.query.filter_by(airline_code=id).first()
+        flight = Flights.query.filter_by(airline_code=id).all()
         if not flight:
             return response.badRequest([],"NOT OK")
-        data = singleTransform(flight)
+        data = transform(flight)
         return response.ok(data, "OK")
     except Exception as e:
         print(e)
