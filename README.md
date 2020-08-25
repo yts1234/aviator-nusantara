@@ -54,13 +54,13 @@ DELETE method
 
 ## Example
 #### Get data
-http://[ip]/flights
+http://[IP]/flights
 
 #### Get Subset of Data
-http://[ip]/flight/[airline_code]
+http://[IP]/flight/[airline_code]
 
 #### Insert Data
-http://[ip]/storeFlight
+http://[IP]/storeFlight
 
 json body
 ```json
@@ -74,7 +74,7 @@ json body
 }
 ```
 #### Update Data
-http://[ip]/updateFlight/[id]
+http://[IP]/updateFlight/[id]
 
 json body
 ```json
@@ -88,7 +88,7 @@ json body
 }
 ```
 #### Delete Data
-http://ip/deleteFlight/[id]
+http://[IP]/deleteFlight/[id]
 
 ### Note
 1. You must first populate the data yourself using the /storeFlight endpoint.
