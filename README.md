@@ -34,7 +34,7 @@ GET method
 ### Get Subset of Data
 GET method
 ```
-/flight/<airline_code>
+/flight/[airline_code]
 ```
 ### Insert Data
 POST method
@@ -44,23 +44,23 @@ POST method
 ### Update Data
 PUT method
 ```
-/updateFlight/<id>
+/updateFlight/[id]
 ```
 ### Delete Data
 DELETE method
 ```
-/deleteFlight/<id>
+/deleteFlight/[id]
 ```
 
 ## Example
 #### Get data
-http://<ip>/flights
+http://[ip]/flights
 
 #### Get Subset of Data
-http://<ip>/flight/<airline_code>
+http://[ip]/flight/[airline_code]
 
 #### Insert Data
-http://<ip>/storeFlight
+http://[ip]/storeFlight
 
 json body
 ```json
@@ -74,7 +74,7 @@ json body
 }
 ```
 #### Update Data
-http://<ip>/updateFlight/<id>
+http://[ip]/updateFlight/[id]
 
 json body
 ```json
@@ -88,8 +88,8 @@ json body
 }
 ```
 #### Delete Data
-http://<ip>/deleteFlight/<id>
+http://ip/deleteFlight/[id]
 
 ### Note
 1. You must first populate the data yourself using the /storeFlight endpoint.
-2. the <id> mean the primary key id. To get this id for delete and update process you can use the /flights endpoint to see the flight id
+2. the [id] mean the primary key id. To get this id for delete and update process you can use the /flights endpoint to see the flight id
