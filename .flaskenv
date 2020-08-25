@@ -1,7 +1,7 @@
 
 FLASK_APP=main.py
 
-DB_HOST=localhost
-DB_DATABASE=aviator
-DB_USERNAME=root
-DB_PASSWORD=Kiriut-213
+DB_HOST=hostname/IP
+DB_DATABASE=database_name
+DB_USERNAME=username
+DB_PASSWORD=password
